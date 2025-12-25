@@ -27,7 +27,7 @@
         }
 
         .header-title {
-            font-size: 20pt;
+            font-size: 18pt;
             font-weight: 700;
             letter-spacing: 0.3px;
         }
@@ -40,7 +40,7 @@
         .card {
             background: white;
             border-radius: 20px;
-            padding: 50px;
+            padding: 35px;
             margin-bottom: 30px;
             transition: all 0.3s ease;
             position: relative;
@@ -56,7 +56,7 @@
 
         .card-tag {
             color: #4a6da7;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -64,7 +64,7 @@
         }
 
         .card-title {
-            font-size: 36px;
+            font-size: 28px;
             font-weight: 800;
             color: #1a2332;
             line-height: 1.2;
@@ -72,7 +72,7 @@
         }
 
         .card-subtitle {
-            font-size: 16px;
+            font-size: 14px;
             color: #6b7280;
             margin-bottom: 20px;
             line-height: 1.6;
@@ -81,9 +81,9 @@
         .recommended-badge {
             background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
             color: white;
-            padding: 8px 18px;
+            padding: 6px 16px;
             border-radius: 25px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             letter-spacing: 0.5px;
             text-transform: uppercase;
@@ -136,7 +136,7 @@
         }
 
         .data-value {
-            font-size: 17px;
+            font-size: 15px;
             color: #1a1a1a;
             font-weight: 600;
             word-break: break-word;
@@ -164,8 +164,8 @@
         }
 
         .copy-btn svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
         }
 
         .copy-all-section {
@@ -178,9 +178,9 @@
             background: #4a6da7;
             color: white;
             border: none;
-            padding: 20px 40px;
+            padding: 18px 35px;
             border-radius: 14px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
             width: 100%;
@@ -352,27 +352,48 @@
                 padding: 15px;
             }
 
+            .header-title {
+                font-size: 16pt;
+            }
+
             .card {
-                padding: 30px 25px;
+                padding: 25px 20px;
             }
 
             .card-title {
-                font-size: 28px;
+                font-size: 24px;
+            }
+
+            .card-subtitle {
+                font-size: 13px;
+            }
+
+            .data-value {
+                font-size: 14px;
+            }
+
+            .data-label {
+                font-size: 12px;
             }
 
             .copy-all-btn {
-                padding: 18px 30px;
-                font-size: 16px;
+                padding: 16px 28px;
+                font-size: 14px;
             }
 
             .notification {
                 right: 15px;
                 left: 15px;
                 top: 15px;
+                font-size: 14px;
             }
 
             .footer-notice {
                 margin: 30px 15px 20px;
+            }
+
+            .footer-notice-text {
+                font-size: 14px;
             }
         }
     </style>
@@ -460,14 +481,14 @@
 
                 <div class="how-it-works">
                     <button class="how-it-works-btn" onclick="toggleInstructions()">
-                        <span id="toggle-icon">▼</span>
+                        <span id="toggle-icon">?</span>
                         ¿Cómo funciona?
                     </button>
                 </div>
 
                 <div class="instructions" id="instructions">
                     <div class="instructions-content">
-                        <div class="instructions-title">📱 Cómo usar los datos de pago móvil</div>
+                        <div class="instructions-title">?? Cómo usar los datos de pago móvil</div>
                         
                         <div class="instruction-step">
                             <div class="step-number">1</div>
@@ -527,7 +548,7 @@
 
     <!-- Aviso importante -->
     <div class="footer-notice">
-        <div class="footer-notice-icon">⚠️</div>
+        <div class="footer-notice-icon">??</div>
         <div class="footer-notice-text">
             <strong>Importante:</strong> Asegúrate de enviar el comprobante al siervo de cuentas.
         </div>
@@ -577,10 +598,10 @@ J002465310`;
             
             if (instructions.classList.contains('open')) {
                 instructions.classList.remove('open');
-                icon.textContent = '▼';
+                icon.textContent = '?';
             } else {
                 instructions.classList.add('open');
-                icon.textContent = '▲';
+                icon.textContent = '?';
             }
         }
     </script>
