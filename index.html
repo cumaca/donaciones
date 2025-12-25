@@ -98,6 +98,78 @@
             margin-top: 30px;
         }
 
+        .bank-account-box {
+            border: 2px solid #4a6da7;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: transparent;
+            position: relative;
+        }
+
+        .bank-account-box:last-child {
+            margin-bottom: 0;
+        }
+
+        .bank-info-content {
+            flex: 1;
+        }
+
+        .bank-label-small {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .bank-name {
+            font-size: 16px;
+            color: #1a2332;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .account-type-label {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .account-type-value {
+            font-size: 15px;
+            color: #1a2332;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .account-number-row {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .account-number-label {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .account-number-with-copy {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .account-number {
+            font-size: 17px;
+            color: #1a2332;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
         .data-item {
             background: white;
             padding: 20px 24px;
@@ -517,30 +589,46 @@
             <p class="card-subtitle">Realiza transferencias directas desde tu banco a cualquiera de estas cuentas.</p>
             
             <div class="data-grid">
-                <div class="data-item">
-                    <div class="data-content">
-                        <div class="data-label">Banco Nacional de Crédito</div>
-                        <div class="data-value">0191-0343-94-2100000088</div>
+                <div class="bank-account-box">
+                    <div class="bank-label-small">Banco</div>
+                    <div class="bank-name">Banco Nacional de Crédito (BNC)</div>
+                    
+                    <div class="account-type-label">Tipo de cuenta</div>
+                    <div class="account-type-value">Corriente</div>
+                    
+                    <div class="account-number-row">
+                        <div class="account-number-label">N° de cuenta</div>
                     </div>
-                    <button class="copy-btn" onclick="copiarTexto('0191-0343-94-2100000088')" title="Copiar">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
-                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </button>
+                    <div class="account-number-with-copy">
+                        <div class="account-number">0191-0343-94-2100000088</div>
+                        <button class="copy-btn" onclick="copiarTexto('0191-0343-94-2100000088')" title="Copiar número de cuenta">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
-                <div class="data-item">
-                    <div class="data-content">
-                        <div class="data-label">Banco Mercantil</div>
-                        <div class="data-value">0105-0050-81-1050335376</div>
+                <div class="bank-account-box">
+                    <div class="bank-label-small">Banco</div>
+                    <div class="bank-name">Banco Mercantil</div>
+                    
+                    <div class="account-type-label">Tipo de cuenta</div>
+                    <div class="account-type-value">Corriente</div>
+                    
+                    <div class="account-number-row">
+                        <div class="account-number-label">N° de cuenta</div>
                     </div>
-                    <button class="copy-btn" onclick="copiarTexto('0105-0050-81-1050335376')" title="Copiar">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
-                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </button>
+                    <div class="account-number-with-copy">
+                        <div class="account-number">0105-0050-81-1050335376</div>
+                        <button class="copy-btn" onclick="copiarTexto('0105-0050-81-1050335376')" title="Copiar número de cuenta">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
