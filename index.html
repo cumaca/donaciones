@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos de pago - Testigos de Jehová</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            background: transparent;
+            color: #4a4a4a;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header-title {
+            font-size: 20pt;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .card-tag {
+            color: #4a6da7;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .card-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1a2332;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .card-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .recommended-badge {
+            background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .data-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 30px;
+        }
+
+        .data-item {
+            background: white;
+            padding: 20px 24px;
+            border-radius: 0;
+            border: none;
+            border-bottom: 1px solid #e0e0e0;
+            transition: all 0.2s ease;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .data-item:first-child {
+            border-radius: 12px 12px 0 0;
+        }
+
+        .data-item:last-child {
+            border-radius: 0 0 12px 12px;
+            border-bottom: none;
+        }
+
+        .data-item:hover {
+            background: #fafafa;
+        }
+
+        .data-content {
+            flex: 1;
+        }
+
+        .data-label {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            font-weight: 400;
+        }
+
+        .data-value {
+            font-size: 17px;
+            color: #1a1a1a;
+            font-weight: 600;
+            word-break: break-word;
+        }
+
+        .copy-btn {
+            background: transparent;
+            color: #666;
+            border: none;
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copy-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .copy-btn:active {
+            background: #e5e5e5;
+        }
+
+        .copy-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .copy-all-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .copy-all-btn {
+            background: #4a6da7;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .copy-all-btn:hover {
+            background: #3d5a8a;
+            transform: translateY(-2px);
+        }
+
+        .copy-all-btn:active {
+            transform: translateY(0);
+        }
+
+        .how-it-works {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .how-it-works-btn {
+            background: transparent;
+            color: #4a6da7;
+            border: none;
+            padding: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .how-it-works-btn:hover {
+            color: #3d5a8a;
+        }
+
+        .instructions {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            margin-top: 0;
+        }
+
+        .instructions.open {
+            max-height: 500px;
+            margin-top: 20px;
+        }
+
+        .instructions-content {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: left;
+        }
+
+        .instructions-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a2332;
+            margin-bottom: 20px;
+        }
+
+        .instruction-step {
+            margin-bottom: 16px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #4a6da7;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .step-text {
+            font-size: 15px;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        .step-text strong {
+            color: #1a2332;
+        }
+
+        .footer-notice {
+            max-width: 600px;
+            margin: 40px auto 30px;
+            background: transparent;
+            padding: 20px 25px;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .footer-notice-icon {
+            font-size: 20px;
+        }
+
+        .footer-notice-text {
+            font-size: 16px;
+            color: #6b7280;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .footer-notice-text strong {
+            color: #4a4a4a;
+        }
+
+        .notification {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 16px 28px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+            opacity: 0;
+            transform: translateX(400px);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .decoration {
+            position: absolute;
+            right: -50px;
+            bottom: -50px;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(74, 109, 167, 0.03) 0%, rgba(74, 109, 167, 0.08) 100%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .card {
+                padding: 30px 25px;
+            }
+
+            .card-title {
+                font-size: 28px;
+            }
+
+            .copy-all-btn {
+                padding: 18px 30px;
+                font-size: 16px;
+            }
+
+            .notification {
+                right: 15px;
+                left: 15px;
+                top: 15px;
+            }
+
+            .footer-notice {
+                margin: 30px 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-title">Datos de pago para donativos</div>
+    </div>
+
+    <div class="container">
+        <!-- PAGO MÓVIL CARD -->
+        <div class="card">
+            <div class="decoration"></div>
+            <div class="card-header">
+                <div>
+                    <div class="card-tag">Método rápido</div>
+                    <h2 class="card-title">Pago móvil</h2>
+                </div>
+                <span class="recommended-badge">Recomendado</span>
+            </div>
+            <p class="card-subtitle">La forma más rápida y sencilla de realizar tu donativo desde tu teléfono.</p>
+            
+            <div class="data-grid">
+                <div class="data-item">
+                    <div class="data-content">
+                        <div class="data-label">Titular</div>
+                        <div class="data-value">TESTIGOS DE JEHOVÁ DE VENEZUELA</div>
+                    </div>
+                    <button class="copy-btn" onclick="copiarTexto('TESTIGOS DE JEHOVÁ DE VENEZUELA')" title="Copiar">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="data-item">
+                    <div class="data-content">
+                        <div class="data-label">Banco</div>
+                        <div class="data-value">Banco Nacional de Crédito (0191)</div>
+                    </div>
+                    <button class="copy-btn" onclick="copiarTexto('0191')" title="Copiar">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="data-item">
+                    <div class="data-content">
+                        <div class="data-label">RIF</div>
+                        <div class="data-value">J - 002465310</div>
+                    </div>
+                    <button class="copy-btn" onclick="copiarTexto('J002465310')" title="Copiar">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="data-item">
+                    <div class="data-content">
+                        <div class="data-label">Teléfono</div>
+                        <div class="data-value">0424 - 347 - 3031</div>
+                    </div>
+                    <button class="copy-btn" onclick="copiarTexto('04243473031')" title="Copiar">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="copy-all-section">
+                <button class="copy-all-btn" onclick="copiarTodosPagoMovil()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="9" y="9" width="13" height="13" rx="2" stroke="white" stroke-width="2"/>
+                        <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="white" stroke-width="2"/>
+                    </svg>
+                    Copiar datos de pago móvil
+                </button>
+
+                <div class="how-it-works">
+                    <button class="how-it-works-btn" onclick="toggleInstructions()">
+                        <span id="toggle-icon">▼</span>
+                        ¿Cómo funciona?
+                    </button>
+                </div>
+
+                <div class="instructions" id="instructions">
+                    <div class="instructions-content">
+                        <div class="instructions-title">📱 Cómo usar los datos de pago móvil</div>
+                        
+                        <div class="instruction-step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Presiona el botón <strong>"Copiar datos de pago móvil"</strong>.</div>
+                        </div>
+
+                        <div class="instruction-step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Dentro de la app de tu banco en <strong>"Pago móvil"</strong>, elige el botón <strong>"Pegar todos los datos"</strong>.</div>
+                        </div>
+
+                        <div class="instruction-step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Rellena el <strong>monto</strong> y valida tu pago.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRANSFERENCIA BANCARIA CARD -->
+        <div class="card">
+            <div class="decoration"></div>
+            <div class="card-tag">Opción disponible</div>
+            <h2 class="card-title">Transferencia bancaria</h2>
+            <p class="card-subtitle">Realiza transferencias directas desde tu banco a cualquiera de estas cuentas.</p>
+            
+            <div class="data-grid">
+                <div class="data-item">
+                    <div class="data-content">
+                        <div class="data-label">Banco Nacional de Crédito</div>
+                        <div class="data-value">0191-0343-94-2100000088</div>
+                    </div>
+                    <button class="copy-btn" onclick="copiarTexto('0191-0343-94-2100000088')" title="Copiar">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="data-item">
+                    <div class="data-content">
+                        <div class="data-label">Banco Mercantil</div>
+                        <div class="data-value">0105-0050-81-1050335376</div>
+                    </div>
+                    <button class="copy-btn" onclick="copiarTexto('0105-0050-81-1050335376')" title="Copiar">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aviso importante -->
+    <div class="footer-notice">
+        <div class="footer-notice-icon">⚠️</div>
+        <div class="footer-notice-text">
+            <strong>Importante:</strong> Asegúrate de enviar el comprobante al siervo de cuentas.
+        </div>
+    </div>
+
+    <!-- Notificación -->
+    <div class="notification" id="notification">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 6L9 17L4 12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        ¡Copiado exitosamente!
+    </div>
+
+    <script>
+        function copiarTexto(texto) {
+            navigator.clipboard.writeText(texto).then(function() {
+                mostrarNotificacion();
+            }).catch(function(err) {
+                console.error('Error al copiar:', err);
+            });
+        }
+
+        function copiarTodosPagoMovil() {
+            const datos = `0191
+04243473031
+J002465310`;
+            
+            navigator.clipboard.writeText(datos).then(function() {
+                mostrarNotificacion();
+            }).catch(function(err) {
+                console.error('Error al copiar:', err);
+            });
+        }
+
+        function mostrarNotificacion() {
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
+            
+            setTimeout(function() {
+                notification.classList.remove('show');
+            }, 2500);
+        }
+
+        function toggleInstructions() {
+            const instructions = document.getElementById('instructions');
+            const icon = document.getElementById('toggle-icon');
+            
+            if (instructions.classList.contains('open')) {
+                instructions.classList.remove('open');
+                icon.textContent = '▼';
+            } else {
+                instructions.classList.add('open');
+                icon.textContent = '▲';
+            }
+        }
+    </script>
+</body>
+</html>
