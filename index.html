@@ -68,13 +68,14 @@
             font-weight: 800;
             color: #1a2332;
             line-height: 1.2;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
         }
 
         .card-subtitle {
             font-size: 14px;
             color: #6b7280;
             margin-bottom: 20px;
+            margin-top: 8px;
             line-height: 1.6;
         }
 
@@ -169,9 +170,8 @@
         }
 
         .copy-all-section {
-            margin-top: 40px;
-            padding-top: 40px;
-            border-top: 2px solid #e2e8f0;
+            margin-top: 30px;
+            padding-top: 0px;
         }
 
         .copy-all-btn {
@@ -189,8 +189,7 @@
             justify-content: center;
             gap: 12px;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.3px;
         }
 
         .copy-all-btn:hover {
@@ -476,19 +475,19 @@
                         <rect x="9" y="9" width="13" height="13" rx="2" stroke="white" stroke-width="2"/>
                         <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="white" stroke-width="2"/>
                     </svg>
-                    Copiar datos de pago móvil
+                    Copiar todos los datos
                 </button>
 
                 <div class="how-it-works">
                     <button class="how-it-works-btn" onclick="toggleInstructions()">
-                        <span id="toggle-icon">?</span>
+                        <span id="toggle-icon">&#9660;</span>
                         ¿Cómo funciona?
                     </button>
                 </div>
 
                 <div class="instructions" id="instructions">
                     <div class="instructions-content">
-                        <div class="instructions-title">?? Cómo usar los datos de pago móvil</div>
+                        <div class="instructions-title">📱 Cómo usar los datos de pago móvil</div>
                         
                         <div class="instruction-step">
                             <div class="step-number">1</div>
@@ -548,7 +547,7 @@
 
     <!-- Aviso importante -->
     <div class="footer-notice">
-        <div class="footer-notice-icon">??</div>
+        <div class="footer-notice-icon">&#9888;</div>
         <div class="footer-notice-text">
             <strong>Importante:</strong> Asegúrate de enviar el comprobante al siervo de cuentas.
         </div>
@@ -598,10 +597,10 @@ J002465310`;
             
             if (instructions.classList.contains('open')) {
                 instructions.classList.remove('open');
-                icon.textContent = '?';
+                icon.innerHTML = '&#9660;';
             } else {
                 instructions.classList.add('open');
-                icon.textContent = '?';
+                icon.innerHTML = '&#9650;';
             }
         }
     </script>
